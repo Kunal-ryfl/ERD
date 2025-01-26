@@ -1,5 +1,5 @@
 ## ERD
-![ERD_](https://github.com/user-attachments/assets/d1a024d4-1953-4e78-bf42-3dac0d4df61d)
+![Screenshot 2025-01-26 224002](https://github.com/user-attachments/assets/9e2debba-381d-4215-8bb6-34ac90582291)
 
 
 ## RELATIONS
