@@ -1,0 +1,54 @@
+- Query 1: Nearest Hub with Available Stock for Customer 1 and SKU 1 
+SELECT 
+    h.hub_id,
+    h.hub_name,
+    ST_Distance(
+        ST_SetSRID(ST_MakePoint(c.customer_longitude, c.customer_latitude), 4326),
+        ST_SetSRID(ST_MakePoint(h.hub_longitude, h.hub_latitude), 4326)
+    ) AS distance
+FROM 
+    Hubs h
+JOIN 
+    Inventories i ON h.hub_id = i.hub_id
+JOIN 
+    Customers c ON c.customer_id = 1 -- Customer 1
+WHERE 
+    i.sku_id = 1 -- SKU 1
+    AND i.quantity > 0
+ORDER BY 
+    distance
+LIMIT 1;
+
+Query 2: Top 10 Customers by Total Value of Orders, Grouped by Tenant
+SELECT 
+    t.tenant_id,
+    c.customer_id,
+    c.customer_name,
+    SUM(o.order_value) AS total_order_value
+FROM 
+    Customers c
+JOIN 
+    Orders o ON c.customer_id = o.customer_id
+JOIN 
+    Tenants t ON c.tenant_id = t.tenant_id
+GROUP BY 
+    t.tenant_id, c.customer_id, c.customer_name
+ORDER BY 
+    total_order_value DESC
+LIMIT 10;
+
+Query 3: Customers with More Than 3 Unique SKUs
+SELECT 
+    c.customer_id,
+    c.customer_name,
+    COUNT(DISTINCT oi.sku_id) AS unique_sku_count
+FROM 
+    Customers c
+JOIN 
+    Orders o ON c.customer_id = o.customer_id
+JOIN 
+    OrderItems oi ON o.order_id = oi.order_id
+GROUP BY 
+    c.customer_id, c.customer_name
+HAVING 
+    COUNT(DISTINCT oi.sku_id) > 3;
