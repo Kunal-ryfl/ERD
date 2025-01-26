@@ -79,6 +79,7 @@ The addresses table uses type_name (to specify the entity type, e.g., customer, 
 ## Queries
 
 - Query 1: Nearest Hub with Available Stock for Customer 1 and SKU 1
+```sql
   
 SELECT 
     h.hub_id,
@@ -99,9 +100,10 @@ WHERE
 ORDER BY 
     distance
 LIMIT 1;
+```
 
 - Query 2: Top 10 Customers by Total Value of Orders, Grouped by Tenant
-
+```sql
 SELECT 
     t.tenant_id,
     c.customer_id,
@@ -118,9 +120,10 @@ GROUP BY
 ORDER BY 
     total_order_value DESC
 LIMIT 10;
+```
 
 - Query 3: Customers with More Than 3 Unique SKUs
-
+```sql
 SELECT 
     c.customer_id,
     c.customer_name,
@@ -135,3 +138,4 @@ GROUP BY
     c.customer_id, c.customer_name
 HAVING 
     COUNT(DISTINCT oi.sku_id) > 3;
+```
