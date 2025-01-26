@@ -1,6 +1,8 @@
+## ERD
+
 ![erd](https://github.com/user-attachments/assets/e25846fb-cc0b-427f-a9df-ac927b83c40b)
 
-
+## RELATIONS
 - Hubs - Tenants
 
 hubs.tenant_id is a foreign key referencing tenants.tenant_id.
