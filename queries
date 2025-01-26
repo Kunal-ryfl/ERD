@@ -1,4 +1,5 @@
 - Query 1: Nearest Hub with Available Stock for Customer 1 and SKU 1 
+```sq
 SELECT 
     h.hub_id,
     h.hub_name,
@@ -18,7 +19,7 @@ WHERE
 ORDER BY 
     distance
 LIMIT 1;
-
+```
 Query 2: Top 10 Customers by Total Value of Orders, Grouped by Tenant
 SELECT 
     t.tenant_id,
