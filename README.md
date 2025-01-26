@@ -1,6 +1,6 @@
 ## ERD
+![ERD_](https://github.com/user-attachments/assets/d1a024d4-1953-4e78-bf42-3dac0d4df61d)
 
-![erd](https://github.com/user-attachments/assets/e25846fb-cc0b-427f-a9df-ac927b83c40b)
 
 ## RELATIONS
 - Hubs - Tenants
