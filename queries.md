@@ -32,7 +32,7 @@ FROM
 JOIN 
     Orders o ON c.customer_id = o.customer_id
 JOIN 
-    Tenants t ON c.tenant_id = t.tenant_id
+    Tenants t ON o.tenant_id = t.tenant_id  -- Join on tenant_id from Orders
 GROUP BY 
     t.tenant_id, c.customer_id, c.customer_name
 ORDER BY 
